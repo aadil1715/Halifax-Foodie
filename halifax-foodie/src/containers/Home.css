@@ -7,3 +7,16 @@
     font-family: "Open Sans", sans-serif;
     font-weight: 600;
   }
+
+  #outer
+{
+    width:100%;
+    text-align: center;
+    float: left;
+}
+.inner
+{
+    margin-right:200px;
+    display: inline-block;
+
+}

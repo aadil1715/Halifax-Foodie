@@ -32,6 +32,7 @@ function App() {
   }
   console.log(isAuthenticated + "isAuth");
   console.log(isAuthenticating + "isAuthenticatING");
+  
   return (
     !isAuthenticating && (
       <div className="App container py-3">
@@ -55,8 +56,7 @@ function App() {
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
                 </>
-              )
-              }
+              )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -65,8 +65,7 @@ function App() {
         </AppContext.Provider>
       </div>
     )
-  );
- 
+  ); 
 
   async function handleLogout() {
     await Auth.signOut();
