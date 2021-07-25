@@ -1,7 +1,8 @@
 import boto3
 import json
+import base64
 from wordcloud import WordCloud
-import matplotlib.pyplot as plt
+import io
 
 
 def lambda_handler(event, context):
@@ -22,14 +23,26 @@ def lambda_handler(event, context):
         finalStr += entitiesJson["Entities"][i]["Text"]
         finalStr += " "
 
+
     wordcloud = WordCloud(width=800, height=800,
                           background_color='white',
-                          min_font_size=10).generate(finalStr)
+                          min_font_size=10).generate(finalStr).to_image()
 
-    plt.figure(figsize=(8, 8), facecolor=None)
-    plt.imshow(wordcloud)
-    plt.axis("off")
-    plt.tight_layout(pad=0)
-    plt.savefig("mygraph.png")
+    print(type(wordcloud))
+    # wordcloud.tobytes()
+    print(type(wordcloud))
 
-    plt.show()
+
+    byteIO = io.BytesIO()
+    wordcloud.save(byteIO, format='PNG')
+    byteArr = byteIO.getvalue()
+    # plt.savefig("mygraph.png")
+
+
+    return {
+        'headers': {"Content-Type": "image/png"},
+        'statusCode': 200,
+        'body': base64.b64encode(byteArr).decode('utf-8'),
+        'isBase64Encoded': True
+    }
+
