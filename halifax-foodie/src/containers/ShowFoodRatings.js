@@ -5,8 +5,9 @@ import Button from "react-bootstrap/Button";
 import { useAppContext } from "../utils/contextUtil";
 import { Auth } from "aws-amplify";
 import { useHistory } from "react-router-dom";
+import Wordcloud from "../Wordcloud";
 
-export default function Home() {
+export default function ShowFoodRatings() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
   const history = useHistory();
@@ -37,17 +38,11 @@ export default function Home() {
   }
   
   return (
-    <div className="Home">
+    <div className="SHR">
       <div className="lander">
         <h1>Halifax Foodie</h1>
         <p className="text-muted">A simple food delivery app!</p>
-        {
-          isAuthenticated ? (<div id="outer">
-          <Button class="inner">Upload Recipie!</Button>
-          <Button class="inner">Show food ratings!</Button>
-          <Button class="inner">Chat</Button>
-          </div>) :(<div> </div>)
-        }
+        <Wordcloud></Wordcloud>
       </div>
     </div>
   );

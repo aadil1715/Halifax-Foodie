@@ -7,6 +7,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./utils/contextUtil";
 import { Auth } from "aws-amplify";
 import { useHistory } from "react-router-dom";
+import { reactLocalStorage } from "reactjs-localstorage";
 
 
 function App() {
@@ -19,15 +20,20 @@ function App() {
   
   async function onLoad() {
     try {
-      await Auth.currentSession();
+      if(reactLocalStorage.get('token'))
+      {
       userHasAuthenticated(true);
+      }
+      else{
+        userHasAuthenticated(false);
+        
+      }
     }
     catch(e) {
       if (e !== 'No current user') {
         alert(e);
       }
     }
-  
     setIsAuthenticating(false);
   }
   console.log(isAuthenticated + "isAuth");
@@ -49,7 +55,7 @@ function App() {
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
               ) : (
                 <>
-                  <LinkContainer to="/signup">
+                  <LinkContainer to="/register">
                     <Nav.Link>Signup</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/login">
@@ -68,7 +74,8 @@ function App() {
   ); 
 
   async function handleLogout() {
-    await Auth.signOut();
+    //await Auth.signOut();
+    reactLocalStorage.remove('token');
     userHasAuthenticated(false);
     history.push("/login");
   }
