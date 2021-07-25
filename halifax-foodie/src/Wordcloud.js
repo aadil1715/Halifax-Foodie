@@ -8,8 +8,6 @@ export default function Wordcloud(){
         if (newWindow) newWindow.opener = null
       }
       
-       
-      
       //Then add to your onClick
 
       return <button onClick={() => openInNewTab('https://0dl3eedc99.execute-api.us-east-1.amazonaws.com/default/generateWordCloud')}>Show WOrdCloud</button>
