@@ -7,6 +7,7 @@ import Login from "./containers/Login";
 import Register from "./containers/Register";
 import ConfirmSignup from "./containers/ConfirmSignup";
 import ShowFoodRatings from "./containers/ShowFoodRatings";
+import GiveFeedback from "./containers/GiveFeedback";
 
 export default function Routes() {
   return (
@@ -28,6 +29,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/showFoodRatings">
         <ShowFoodRatings />
+      </Route>
+      <Route exact path="/giveFeedback">
+        <GiveFeedback />
       </Route>
       <Route>
         <NotFound />
