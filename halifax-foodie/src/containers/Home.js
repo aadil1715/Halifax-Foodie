@@ -4,7 +4,7 @@ import {reactLocalStorage} from 'reactjs-localstorage';
 import Button from "react-bootstrap/Button";
 import { useAppContext } from "../utils/contextUtil";
 import { Auth } from "aws-amplify";
-import { useHistory } from "react-router-dom";
+import { useHistory,Link } from "react-router-dom";
 import Lex from "./Lex";
 
 export default function Home() {
@@ -36,6 +36,9 @@ export default function Home() {
   
     setIsAuthenticating(false);
   }
+
+  const goRating = () => history.push('/showFoodRatings');
+
   
   return (
     <div className="Home">
@@ -43,10 +46,11 @@ export default function Home() {
         <h1>Halifax Foodie</h1>
         <p className="text-muted">A simple food delivery app!</p>
         {
-          isAuthenticated ? (<div id="outer">
+          isAuthenticated ? (
+          <div id="outer">
           <Button class="inner">Upload Recipie!</Button>
-          <Button class="inner">Show food ratings!</Button>
-          <Button onClick class="inner">Chat with restaurant</Button>
+          <Button onClick={goRating} class="inner">Show food ratings</Button>
+          <Button class="inner">Chat with restaurant</Button>
           </div>) :(<div> </div>)
         }
         <Lex></Lex>

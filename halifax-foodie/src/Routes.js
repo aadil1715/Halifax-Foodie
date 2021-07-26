@@ -10,6 +10,7 @@ import ShowFoodRatings from "./containers/ShowFoodRatings";
 import GiveFeedback from "./containers/GiveFeedback";
 import SetSecurityQuestion from "./containers/SetSecurityQuestion";
 import GetSecurityQuestion from "./containers/GetSecurityQuestion";
+import UploadRecipie from "./containers/UploadRecipie";
 
 export default function Routes() {
   return (
@@ -40,6 +41,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/giveFeedback">
         <GiveFeedback />
+      </Route>
+      <Route exact path="/uploadrecipie">
+        <UploadRecipie />
       </Route>
       <Route>
         <NotFound />

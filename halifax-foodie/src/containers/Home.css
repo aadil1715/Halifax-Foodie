@@ -14,6 +14,12 @@
     text-align: center;
     float: left;
 }
+
+Link{
+  margin-right:200px;
+    display: inline-block;
+    text-color:azure
+}
 .inner
 {
     margin-right:200px;

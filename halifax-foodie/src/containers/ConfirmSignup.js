@@ -33,7 +33,6 @@ export default function ConfirmSignup() {
         } else{
             alert("Your account has been verified!. Thank you. Please log in with your credentials")
             history.push("/SetSecurityQuestion")
-          
         }
         } catch (e) {
           alert(e.message);
