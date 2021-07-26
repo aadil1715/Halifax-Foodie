@@ -1,5 +1,3 @@
-import { useHistory} from 'react-router-dom';
-import React,{useState,useEffect} from "react";
 import { reactLocalStorage } from 'reactjs-localstorage';
 var axios = require('axios');
 var AWS = require("aws-sdk");
@@ -29,7 +27,7 @@ export default function Recipe(props){
     console.log(props.input)
     var recipeContent = props.input;
     var finalKey = "";
-    var finalVal = "";
+    var finalVal = 0;
     var MLDataJSON = null;
     var recipe = ""
 
@@ -48,7 +46,7 @@ export default function Recipe(props){
         method: 'POST',
         url: 'https://us-central1-aiplatform.googleapis.com/ui/projects/682716498252/locations/us-central1/endpoints/5123319565157138432:predict',
         headers: {
-            'Authorization': 'Bearer ya29.a0ARrdaM_jSDRGewwuqZJJNprTtK3xbPN8KHVAx70r-40gDqqImjN2KLVWe0I0UIctaJA_i3w0aP_639jusSVqJztNRyr09WXUDMzgklwPQo1ZMdTB8fuiGupEHmjEQMwFRG4hNBm_eGq0NWqvKRaC2g2Vf5SSaYrIiy_uBg',
+            'Authorization': 'Bearer ya29.a0ARrdaM-KeXalfEbYxaBfVmppnri6UHk9D983_QXVzu1XaOxdMoKWaNi5iPQjWO_1KrOt3u-9bBscFB6gQbONDuxzeufjjosMaXlWnye-QZgMY2xxPwi5IXhlzTL626LOWD6pwOkrTFgbjOQwSHv5xclad5tBtcOtpGA_Bw',
             'Content-Type': 'application/json'
         },
         data : data2
@@ -67,15 +65,12 @@ export default function Recipe(props){
             var keys = pro.predictions[0].displayNames;
             var values = pro.predictions[0].confidences;
 
-            for(var i =0;i<keys.length-1;i++){
+            for(var i =0;i<keys.length;i++){
 
                 var currentKey = keys[i];
                 var currentValue = (values[i])*100;
-                if(currentValue < (values[i+1]*100)){
-                    finalKey = keys[i+1];
-                    finalVal = values[i+1]
-                }else {
-                    finalKey =currentKey;
+                if(finalVal < currentValue){
+                    finalKey = currentKey;
                     finalVal = currentValue;
                 }
                 console.log(finalKey, finalVal);
