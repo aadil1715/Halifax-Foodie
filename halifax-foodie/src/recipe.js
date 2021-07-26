@@ -1,5 +1,3 @@
-import { useHistory} from 'react-router-dom';
-import React,{useState,useEffect} from "react";
 import { reactLocalStorage } from 'reactjs-localstorage';
 var axios = require('axios');
 var AWS = require("aws-sdk");
@@ -68,7 +66,7 @@ export default function Recipe(props){
             var keys = pro.predictions[0].displayNames;
             var values = pro.predictions[0].confidences;
 
-            for(var i =0;i<keys.length-1;i++){
+            for(var i =0;i<keys.length;i++){
 
                 var currentKey = keys[i];
                 var currentValue = (values[i])*100;
