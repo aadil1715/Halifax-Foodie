@@ -32,7 +32,7 @@ export default function ConfirmSignup() {
             alert("Your code has expired. As you have already confirmed the code. Please login")
         } else{
             alert("Your account has been verified!. Thank you. Please log in with your credentials")
-            history.push("/login")
+            history.push("/SetSecurityQuestion")
           
         }
         } catch (e) {

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import db from "./firebase_config"
+import db from "../firebase_config"
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useHistory } from "react-router-dom";
+import { reactLocalStorage } from 'reactjs-localstorage';
 
 function RiverInformation({email}) {
   const [riverInformation, setRiverInformation] = useState({});
   const [gotData, setGotData] = useState(false);
   const [question1, setquestion1] = useState("");
   const [question2, setquestion2] = useState("");
+  const history = useHistory();
   function validateForm() {
     return question1.length > 0 && question2.length > 0;
   }
@@ -19,7 +22,7 @@ function RiverInformation({email}) {
       docRef.get().then((doc) => {
           if (doc.exists) {
               let data2 = doc.data();
-              setRiverInformation({Q1: data2.Question1, Q2: data2.Question2})
+              setRiverInformation({Q1: data2.Question1, Q2: data2.Question2, A1: data2.Answer1, A2: data2.Answer2})
               setGotData(true);
               console.log("Document data:", data2);
           } else {
@@ -35,10 +38,20 @@ function RiverInformation({email}) {
   async function handleSubmit(event) {
     event.preventDefault();
     const docRef = db.collection('SecurityQuestions').doc(email);
-    docRef.update({
-      Answer1: question1,
-      Answer2: question2
-    })
+    // docRef.update({
+    //   Answer1: question1,
+    //   Answer2: question2
+    // })
+    console.log(question1)
+    console.log(riverInformation.A1)
+    console.log(question2==riverInformation.A2)
+    if(question1==riverInformation.A1 && question2==riverInformation.A2){
+        alert("You are verified. Thank you!")
+        history.push("/")
+    }
+    else{
+        alert("You have entered incorrect answers. Please enter again.")
+    }
   }
 
 //Print the format of security Question here.
@@ -79,7 +92,7 @@ RiverInformation.propTypes = {
   name: PropTypes.string.isRequired
  }
 
-class Test extends React.Component {
+class GetSecurityQuestion extends React.Component {
 
   constructor(props)
   {
@@ -111,12 +124,17 @@ class Test extends React.Component {
 // }
   
   render(){
+      if(reactLocalStorage.get("email")){
     return (
       <div>
-        <RiverInformation email="ruhanzack@gmail.com"/>
+        <RiverInformation email= {reactLocalStorage.get("email")}/>
       </div>
     );
+      } else{
+          return(
+          <div>Please log in.</div>);
+      }
 }
 }
 
-export default Test
+export default GetSecurityQuestion

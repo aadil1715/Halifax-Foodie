@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import { useAppContext } from "../utils/contextUtil";
 import { Auth } from "aws-amplify";
 import { useHistory } from "react-router-dom";
+import Lex from "./Lex";
 
 export default function Home() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
@@ -45,9 +46,10 @@ export default function Home() {
           isAuthenticated ? (<div id="outer">
           <Button class="inner">Upload Recipie!</Button>
           <Button class="inner">Show food ratings!</Button>
-          <Button class="inner">Chat</Button>
+          <Button onClick class="inner">Chat with restaurant</Button>
           </div>) :(<div> </div>)
         }
+        <Lex></Lex>
       </div>
     </div>
   );

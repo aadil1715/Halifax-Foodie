@@ -1,7 +1,10 @@
-import LexChat from "react-lex-plus";
+import LexChat from "react-lex";
+import React,{useState,useEffect,Component} from "react";
+
  
-class App extends Component {
-  render() {
+class Lex extends Component {
+  render(){
+    return(
     <LexChat
       botName="OrderStatus"
       IdentityPoolId="us-east-1:4901da3d-7c40-46c4-8e1d-c872648c64e1"
@@ -14,8 +17,8 @@ class App extends Component {
       greeting={
         "Hello, how can I help? You can say things like 'help' to get more info"
       }
-    />;
-  }
+    />
+    );
 }
-export default App;
-{"mode":"full","isActive":false}
+}
+export default Lex;

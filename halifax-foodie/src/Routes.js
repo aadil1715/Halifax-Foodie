@@ -8,6 +8,8 @@ import Register from "./containers/Register";
 import ConfirmSignup from "./containers/ConfirmSignup";
 import ShowFoodRatings from "./containers/ShowFoodRatings";
 import GiveFeedback from "./containers/GiveFeedback";
+import SetSecurityQuestion from "./containers/SetSecurityQuestion";
+import GetSecurityQuestion from "./containers/GetSecurityQuestion";
 
 export default function Routes() {
   return (
@@ -26,6 +28,12 @@ export default function Routes() {
       </Route>
       <Route exact path="/test">
         <Test />
+      </Route>
+      <Route exact path="/SetSecurityQuestion">
+        <SetSecurityQuestion />
+      </Route>
+      <Route exact path="/GetSecurityQuestion">
+        <GetSecurityQuestion />
       </Route>
       <Route exact path="/showFoodRatings">
         <ShowFoodRatings />

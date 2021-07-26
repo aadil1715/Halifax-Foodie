@@ -76,6 +76,7 @@ function App() {
   async function handleLogout() {
     //await Auth.signOut();
     reactLocalStorage.remove('token');
+    reactLocalStorage.remove('email');
     userHasAuthenticated(false);
     history.push("/login");
   }

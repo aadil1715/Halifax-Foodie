@@ -34,7 +34,8 @@ export default function Login() {
     if(resp.data.error === false && resp.data.message === "success"){
       userHasAuthenticated(true);
       reactLocalStorage.set('token',resp.data.data.id_token)
-      history.push("/");
+      reactLocalStorage.set('email',email)
+      history.push("/GetSecurityQuestion");
     } else{
       alert("Please enter correct credentials");
       
