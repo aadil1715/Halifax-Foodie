@@ -40,6 +40,7 @@ export default function ConfirmSignup() {
       }
       return (
         <div className="ConfirmSignup">
+          <h4>You would have recieved a verification code on your email. Please enter the code.</h4>
           <Form onSubmit={handleSubmit}>
             <Form.Group size="lg" controlId="email">
               <Form.Label>Email</Form.Label>

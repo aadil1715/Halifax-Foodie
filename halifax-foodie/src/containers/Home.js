@@ -38,6 +38,9 @@ export default function Home() {
   }
 
   const goRating = () => history.push('/showFoodRatings');
+  const goRecipe = () => history.push('/uploadrecipie');
+  const goFeedback = () => history.push('/giveFeedback');
+
 
   
   return (
@@ -48,9 +51,9 @@ export default function Home() {
         {
           isAuthenticated ? (
           <div id="outer">
-          <Button class="inner">Upload Recipie!</Button>
+          <Button  onClick={goRecipe} class="inner">Upload Recipie!</Button>
           <Button onClick={goRating} class="inner">Show food ratings</Button>
-          <Button class="inner">Chat with restaurant</Button>
+          <Button onClick={goFeedback} class="inner">Give Feedback</Button>
           </div>) :(<div> </div>)
         }
         <Lex></Lex>

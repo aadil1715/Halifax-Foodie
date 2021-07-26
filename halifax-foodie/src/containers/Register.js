@@ -33,6 +33,7 @@ export default function Register() {
         //   userHasAuthenticated(true);
         //   reactLocalStorage.set('token',resp.data.data.id_token)
         //   history.push("/");
+        reactLocalStorage.set("email",email)
         history.push("/confirmsignup")
 
 

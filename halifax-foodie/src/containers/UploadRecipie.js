@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import { reactLocalStorage } from "reactjs-localstorage";
 import Recipe from "../recipe.js"
 import { useHistory, useLocation } from 'react-router-dom';
+import {render} from 'react-dom';
 export default function UploadRecipie(){
     const email = reactLocalStorage.get("email")
    // const history = useHistory();
@@ -18,7 +19,11 @@ export default function UploadRecipie(){
         event.preventDefault(); 
         Recipe({input},{email})
         console.log(email)
+        
         const abc = reactLocalStorage.get("Tag")
+        //setTimeout(alert("Recipe added successfully. The tag for this recipe is " + abc),7000);
+       
+       
     alert("Recipe added successfully. The tag for this recipe is " + abc);
     reactLocalStorage.remove('Tag')
         //const resp = location.myCustomProps.data;

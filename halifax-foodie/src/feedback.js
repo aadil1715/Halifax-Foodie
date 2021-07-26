@@ -2,10 +2,10 @@ export default function feedback(props){
     const AWS = require('aws-sdk')
 const fs = require('fs')
 const { type } = require('os')
-const ACCESS_KEY_ID = "ASIAUOKAFNQPUDEDFHWQ"
-const SECRET_ACCESS_KEY = "wBctDj2SmrMBWxXn5mkj+tvP/+lm1fiSbvYWdh0Q"
+const ACCESS_KEY_ID = "ASIAUOKAFNQP4XVMZ3VV"
+const SECRET_ACCESS_KEY = "BYnj2uzbyjZhSeov/xyy6HewqEmxOQzZgn41xtSb"
 const BUCKET_NAME = "serverlessprojectfeedback"
-const SESSION_TOKEN = "FwoGZXIvYXdzEEAaDGxA57f3kbLFH6bENCK/AZoMtlSiOqfOTgc5k9LJUjv4HEDU28CpHHvc6AdHOW2Oj+K6A8ch485P0z3P11ru9SS2aPwjyn1fdKxWy2Bpv5lqz7A6bCbLr8rh/mzxbR6Pz/6fx64x9g1BSiMS5NEoP687WYpa88KpUZCau5HUrEeJ30cPBRjC8XqinLFbZGtJmyByY1DAiYa6lQN7PtBQUoUDQ1IqjDveq3st2p8lPi6Zabf6/7FsHrOK/oWm2h/z5+k/uAzNYyUlrBl3MVJ2KPnQ94cGMi30GEDPLBorNWqUwqw9WnLoI9LKKCV3EIeZZOZn/qPsaD9CqnXStQp7sEkIxaY="
+const SESSION_TOKEN = "FwoGZXIvYXdzEFQaDLsiEMZ/DgDBdE8K7iK/ARRViMMHb2ynxEet1ByUSmxeHaWviJdftkdobcFBjFDFlyq87AMO+Yf99T2/AINzOQmCLS6O18dLJZWYEU3HqSFElQ4wjElM64uw3rR7Pm1+DKLO9C6MNWrWhQOQrJBp4Pp9zvV89desevzKxmx7OKnQK7z89M1OWOYZRTQZee84p9ahLj5G7vcveFizgKsHLgrNl1Mo4M1HSHvARi8qWfhHH8koD+XUV3Qiw4LvSEE/Rn1GwRp9Pe3vPkvrCmHBKLmN/IcGMi1HrRh8B6RD43JYhrkC6n+1c2k1j17PXHwDAeL+sG1i/U8SZVHbsSj0SPNcxsg="
 
 let existingFeedback = "";
 let newFeedback;
@@ -27,7 +27,7 @@ s3.getObject(params, function(err, data) {
     // fs.writeFileSync('./test.txt', data.Body)
     console.log('file downloaded successfully')
     newFeedback = props.feedback;
-    existingFeedback += newFeedback;
+    existingFeedback += newFeedback + " ";
 
     var params2 = {
         Key: 'sampleFeedbacks.txt',

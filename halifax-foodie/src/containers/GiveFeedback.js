@@ -15,6 +15,7 @@ export default function GiveFeedback() {
   
     async function handleSubmit(event) {
       event.preventDefault();
+      feedback2({feedback});
     }
 
     return (
@@ -29,7 +30,7 @@ export default function GiveFeedback() {
               onChange={(e) => setFeedback(e.target.value)}
             />
           </Form.Group>
-          <Button onClick={feedback2({feedback})} block size="lg" type="submit" disabled={!validateForm()}>
+          <Button block size="lg" type="submit" disabled={!validateForm()}>
             Give feedback
           </Button>
         </Form>

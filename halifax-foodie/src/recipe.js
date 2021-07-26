@@ -6,9 +6,9 @@ var AWS = require("aws-sdk");
 
 export default function Recipe(props){
 
-    const ACCESS_KEY_ID = "ASIAX2MMPUAMJYBOYRWZ";
-    const SECRET_KEY_ACCESS = "Ze6h1YN3SUcntJNpfxsZfc0x0OcVfRqU4E2BuhTw";
-    const SESSION_TOKEN = "FwoGZXIvYXdzEFEaDLQ/lYceVOEY9mo3niK/AblRgkFU6/ex0HzWQ8VLiDoUHJw9VrziPY6binZbKyS09BsSJc/gVXLTGDYCyJ4xukdtuXP3bcwv0Sm8ov9TYqex2z8ikYkgojnQdc6ofoadpeAlaoqo9x5tdIaBmZ5+7AzzSG8Z3Rgy429A+BW475RGX+XYKqoOcXB1/jZDm30wTSEa773is8QYQdGCr+UXnPskl9VSdwmRfGMpnbmlPjEuE8sTOBpV1Su1vYgwpU7UcknwZAWUPEyZNif3NvXvKNif+4cGMi1odYF9RizwR38W+sa12/gJQRonCca0wyGYrkDm9EMpnjxj7dx+iEzQuucZpZQ=";
+    const ACCESS_KEY_ID = "ASIAX2MMPUAMN7WQRVWO";
+    const SECRET_KEY_ACCESS = "k9UURGOtTOGeTaC/7x1J8S98oilQMbe/zU1B8QX3";
+    const SESSION_TOKEN = "FwoGZXIvYXdzEFQaDLsAAYwUI0YZ/wInrSK/AYIFMdBS/Uy8wvO3zVCh8XbQ+NlkdHmDzoflvEUZsexWj0d+dQSIxeIIDQHGrzc9fyH3TIE/wp58epbVV3S7kSX0nwSdEbNWwlNFF8JLNugjPpDOF0s+EyUh8GdujSAu3g1pENbU4Td5t3oghwo/hgU8J10ncD1U8diZMQEy87qiVdlIAZtBexJRjmsEgn2Cu/kO4m3gPq2SlKXHg9sSu8HhlN8fvV3KJ15VViRYK0uTYUfTnmNCc8iyaf/EbXm2KOuK/IcGMi1qaBFMu7HdqIlcJAUG2gGQHnPqmi/z8dBPDjt58W9KG+5Q0iS7714GLgavdRY=";
     const TABLE = "RecipeRecords";
     
     var isInserted = false;
@@ -25,11 +25,12 @@ export default function Recipe(props){
 
     var recipeid = Math.floor(Math.random()*100);
     var tag = "TAG HERE";
-    var restaurant = props.email;
+    var restaurant = reactLocalStorage.get('email');
+    console.log(restaurant)
     console.log(props.input)
     var recipeContent = props.input;
     var finalKey = "";
-    var finalVal = "";
+    var finalVal = 0;
     var MLDataJSON = null;
     var recipe = ""
 
@@ -48,7 +49,7 @@ export default function Recipe(props){
         method: 'POST',
         url: 'https://us-central1-aiplatform.googleapis.com/ui/projects/682716498252/locations/us-central1/endpoints/5123319565157138432:predict',
         headers: {
-            'Authorization': 'Bearer ya29.a0ARrdaM_jSDRGewwuqZJJNprTtK3xbPN8KHVAx70r-40gDqqImjN2KLVWe0I0UIctaJA_i3w0aP_639jusSVqJztNRyr09WXUDMzgklwPQo1ZMdTB8fuiGupEHmjEQMwFRG4hNBm_eGq0NWqvKRaC2g2Vf5SSaYrIiy_uBg',
+            'Authorization': 'Bearer ya29.a0ARrdaM9aVHUt1hBQ0WdqpYsOd9ZRhFLee86QPQpKSEn1NM2HBcU3FUYw9XjNcwr54JXpesWg90_Y6abD85c31jpQxgsHgGTalKGYKlibz1pgzXBArOPPraDr8QDyLyYryZw-AVmhhJLN_x6aEwtCrERF8d5yAAh-susSnQ',
             'Content-Type': 'application/json'
         },
         data : data2
@@ -71,11 +72,8 @@ export default function Recipe(props){
 
                 var currentKey = keys[i];
                 var currentValue = (values[i])*100;
-                if(currentValue < (values[i+1]*100)){
-                    finalKey = keys[i+1];
-                    finalVal = values[i+1]
-                }else {
-                    finalKey =currentKey;
+                if(finalVal < currentValue){
+                    finalKey = currentKey;
                     finalVal = currentValue;
                 }
                 console.log(finalKey, finalVal);
