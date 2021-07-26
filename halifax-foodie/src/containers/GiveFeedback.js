@@ -1,15 +1,9 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import {reactLocalStorage} from 'reactjs-localstorage';
-import ReactDOM from 'react-dom'; 
-import { render } from "@testing-library/react";
+import Form from "react-bootstrap/Form";
+import feedback2 from "../feedback";
 import "./Login.css";
-import { Auth } from "aws-amplify";
-import { useAppContext } from "../utils/contextUtil";
-import { useHistory } from "react-router-dom";
 const { default: Axios } = require("axios");
-import feedback from "../feedback";
 
 export default function GiveFeedback() {
     const [feedback, setFeedback] = useState("");
@@ -35,7 +29,7 @@ export default function GiveFeedback() {
               onChange={(e) => setFeedback(e.target.value)}
             />
           </Form.Group>
-          <Button onClick={feedback(this.state.feedback)} block size="lg" type="submit" disabled={!validateForm()}>
+          <Button onClick={feedback2({feedback})} block size="lg" type="submit" disabled={!validateForm()}>
             Give feedback
           </Button>
         </Form>
