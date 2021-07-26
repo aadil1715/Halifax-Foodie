@@ -1,13 +1,14 @@
 import { useHistory} from 'react-router-dom';
 import React,{useState,useEffect} from "react";
+import { reactLocalStorage } from 'reactjs-localstorage';
 var axios = require('axios');
 var AWS = require("aws-sdk");
 
 export default function Recipe(props){
+
     const ACCESS_KEY_ID = "ASIAX2MMPUAMJYBOYRWZ";
     const SECRET_KEY_ACCESS = "Ze6h1YN3SUcntJNpfxsZfc0x0OcVfRqU4E2BuhTw";
     const SESSION_TOKEN = "FwoGZXIvYXdzEFEaDLQ/lYceVOEY9mo3niK/AblRgkFU6/ex0HzWQ8VLiDoUHJw9VrziPY6binZbKyS09BsSJc/gVXLTGDYCyJ4xukdtuXP3bcwv0Sm8ov9TYqex2z8ikYkgojnQdc6ofoadpeAlaoqo9x5tdIaBmZ5+7AzzSG8Z3Rgy429A+BW475RGX+XYKqoOcXB1/jZDm30wTSEa773is8QYQdGCr+UXnPskl9VSdwmRfGMpnbmlPjEuE8sTOBpV1Su1vYgwpU7UcknwZAWUPEyZNif3NvXvKNif+4cGMi1odYF9RizwR38W+sa12/gJQRonCca0wyGYrkDm9EMpnjxj7dx+iEzQuucZpZQ=";
-    const history = useHistory();
     const TABLE = "RecipeRecords";
     
     var isInserted = false;
@@ -47,7 +48,7 @@ export default function Recipe(props){
         method: 'POST',
         url: 'https://us-central1-aiplatform.googleapis.com/ui/projects/682716498252/locations/us-central1/endpoints/5123319565157138432:predict',
         headers: {
-            'Authorization': 'Bearer ya29.a0ARrdaM-VlfbFfe6B4N1g9QV9vV1Q7nhBqFoT61uRsX6xImcTgpOcLbpm_PBAq4dswZcwqH8HUbNt87_Rsc1xSwzhZ6sUp2tiH4J_RaHn_2HiZdoY9i9Y3NFrINwhsaPVTzRXqassDhi52DaACSkrUX7Kkmwr8hTNzlHGng',
+            'Authorization': 'Bearer ya29.a0ARrdaM_jSDRGewwuqZJJNprTtK3xbPN8KHVAx70r-40gDqqImjN2KLVWe0I0UIctaJA_i3w0aP_639jusSVqJztNRyr09WXUDMzgklwPQo1ZMdTB8fuiGupEHmjEQMwFRG4hNBm_eGq0NWqvKRaC2g2Vf5SSaYrIiy_uBg',
             'Content-Type': 'application/json'
         },
         data : data2
@@ -82,6 +83,7 @@ export default function Recipe(props){
 
             console.log("Value for Final Value");
             console.log(finalKey, finalVal);
+                reactLocalStorage.set('Tag', finalKey)
 
             tag = finalKey;
             recipe = recipeContent;
@@ -108,7 +110,7 @@ export default function Recipe(props){
                 if (err) {
                     console.error("Unable to add item. Error JSON:", JSON.stringify(err, null, 2));
                 } else {
-                    console.log("Recipe Added!" + "and Tag is " + finalKey + recipeContent);
+                    console.log("Recipe Added!" + "and Tag is " + finalKey);
                     isInserted = true;
                 }
             });
@@ -116,14 +118,6 @@ export default function Recipe(props){
         .catch(function (error) {
             console.log(error.response);
         });
-
-    return(
-     isInserted ? 
-     history.push({
-        pathname: '/uploadrecipe',
-        myCustomProps: {data: finalKey}
-         }) : <div></div>
-    )
 }
 
 
