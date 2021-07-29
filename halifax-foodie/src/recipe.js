@@ -4,9 +4,9 @@ var AWS = require("aws-sdk");
 
 export default function Recipe(props){
 
-    const ACCESS_KEY_ID = "ASIAX2MMPUAMN7WQRVWO";
-    const SECRET_KEY_ACCESS = "k9UURGOtTOGeTaC/7x1J8S98oilQMbe/zU1B8QX3";
-    const SESSION_TOKEN = "FwoGZXIvYXdzEFQaDLsAAYwUI0YZ/wInrSK/AYIFMdBS/Uy8wvO3zVCh8XbQ+NlkdHmDzoflvEUZsexWj0d+dQSIxeIIDQHGrzc9fyH3TIE/wp58epbVV3S7kSX0nwSdEbNWwlNFF8JLNugjPpDOF0s+EyUh8GdujSAu3g1pENbU4Td5t3oghwo/hgU8J10ncD1U8diZMQEy87qiVdlIAZtBexJRjmsEgn2Cu/kO4m3gPq2SlKXHg9sSu8HhlN8fvV3KJ15VViRYK0uTYUfTnmNCc8iyaf/EbXm2KOuK/IcGMi1qaBFMu7HdqIlcJAUG2gGQHnPqmi/z8dBPDjt58W9KG+5Q0iS7714GLgavdRY=";
+    const ACCESS_KEY_ID = "ASIAX2MMPUAMFEOHFAX7";
+    const SECRET_KEY_ACCESS = "4BYYYybw19GCiKBepDvcAGFJkSxcU0EVGnCyWzIH";
+    const SESSION_TOKEN = "FwoGZXIvYXdzEJv//////////wEaDC+djkBekxeUUmNRJyK/AV0tXoLTTevQxmsHp2QyCpGo8bnZVWGrqIjTj4KUAwy94vs1/xSa9dO+iUdGnvkPmFFXsg2whiZclO2K/th9aawAEPHBG5imDU5A6h+0Q3wBfyQ1BywKvMTvvKZvGKuR2FBCA5poVN5vRNLLk/wgaLfgKMvsOSWMymScHSzqrP03/l7ZKdek/cAIqNkZ5CqbSQjF1ZrNXGmJUQ0mT5RRkNbU9KKskxCVypesRX6u2UTHrGhLGSBi/gMalmEgRlQ2KO7Hi4gGMi3DpraBLHAPE/6y0l6QaoAB5mNEK+F77g+GIXWGHXAqHKZMT2ef2cWrp5JIC+o=";
     const TABLE = "RecipeRecords";
     
     var isInserted = false;
@@ -47,7 +47,7 @@ export default function Recipe(props){
         method: 'POST',
         url: 'https://us-central1-aiplatform.googleapis.com/ui/projects/682716498252/locations/us-central1/endpoints/5123319565157138432:predict',
         headers: {
-            'Authorization': 'Bearer ya29.a0ARrdaM9aVHUt1hBQ0WdqpYsOd9ZRhFLee86QPQpKSEn1NM2HBcU3FUYw9XjNcwr54JXpesWg90_Y6abD85c31jpQxgsHgGTalKGYKlibz1pgzXBArOPPraDr8QDyLyYryZw-AVmhhJLN_x6aEwtCrERF8d5yAAh-susSnQ',
+            'Authorization': 'Bearer ya29.a0ARrdaM8nEmKaw1qqhP9s_4fH1cBGQlqOmg-jpPKzhK1jKDuVswuf2p29n1GRiFYun801wpSHuNW4jjyyQpJSCYEVGcxMshaJa-bsHPlLyrQPCIvcMTeAJ0dvu7bu0hTZeCaPC1ArI-nMLMn4YZ7jzw230bTCvttAa-vgPw',
             'Content-Type': 'application/json'
         },
         data : data2
@@ -79,8 +79,11 @@ export default function Recipe(props){
 
             console.log("Value for Final Value");
             console.log(finalKey, finalVal);
-                reactLocalStorage.set('Tag', finalKey)
-
+            if(reactLocalStorage.get('Tag')==null)
+            {
+            reactLocalStorage.set('Tag', finalKey)
+            }
+            alert("Recipe added successfully. The tag for this recipe is " + finalKey)
             tag = finalKey;
             recipe = recipeContent;
 
@@ -114,6 +117,9 @@ export default function Recipe(props){
         .catch(function (error) {
             console.log(error.response);
         });
+
+
+
 }
 
 

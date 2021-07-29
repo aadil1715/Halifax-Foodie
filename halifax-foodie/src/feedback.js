@@ -2,10 +2,10 @@ export default function feedback(props){
     const AWS = require('aws-sdk')
 const fs = require('fs')
 const { type } = require('os')
-const ACCESS_KEY_ID = "ASIAUOKAFNQP4XVMZ3VV"
-const SECRET_ACCESS_KEY = "BYnj2uzbyjZhSeov/xyy6HewqEmxOQzZgn41xtSb"
+const ACCESS_KEY_ID = "ASIAUOKAFNQPTCNBFXC4"
+const SECRET_ACCESS_KEY = "JHALmbyvVe1K4BWS88bgxLEorqZyHg9Rm2wvNI3h"
 const BUCKET_NAME = "serverlessprojectfeedback"
-const SESSION_TOKEN = "FwoGZXIvYXdzEFQaDLsiEMZ/DgDBdE8K7iK/ARRViMMHb2ynxEet1ByUSmxeHaWviJdftkdobcFBjFDFlyq87AMO+Yf99T2/AINzOQmCLS6O18dLJZWYEU3HqSFElQ4wjElM64uw3rR7Pm1+DKLO9C6MNWrWhQOQrJBp4Pp9zvV89desevzKxmx7OKnQK7z89M1OWOYZRTQZee84p9ahLj5G7vcveFizgKsHLgrNl1Mo4M1HSHvARi8qWfhHH8koD+XUV3Qiw4LvSEE/Rn1GwRp9Pe3vPkvrCmHBKLmN/IcGMi1HrRh8B6RD43JYhrkC6n+1c2k1j17PXHwDAeL+sG1i/U8SZVHbsSj0SPNcxsg="
+const SESSION_TOKEN = "FwoGZXIvYXdzEJv//////////wEaDMTQktEyK/+M+4aSByK/AaBam1d7yXujJKpcxmmMQi62wjHwWNgciQsg9DLEv/JKHXGqVRDEyH9jl70nScxVpdSmNHOYqi/LDDTev4L4PmuKEh3CxRvyZV0eLS2/oSGVH9aZh6ogvfZpaZl9kz+2W4PW4cEsKV2Hocm+VXhangDkq6HsHurjAG/4gQHdoxGtj5o33Jr2Ljbpf2ID3DLH2rODXRYYkLbzorLwkRREimGRonYBQBXMmElQLOUKhFNRsL9ZBmzpMnz/yIZAs7LGKOLGi4gGMi0Fumv7zEpe+jJ45QfL3POCz1u2/RGKYuBGSN7jI0yghBWogXSnaz4YWgllvKE="
 
 let existingFeedback = "";
 let newFeedback;

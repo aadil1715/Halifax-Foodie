@@ -20,12 +20,12 @@ export default function UploadRecipie(){
         Recipe({input},{email})
         console.log(email)
         
-        const abc = reactLocalStorage.get("Tag")
+        // const abc = reactLocalStorage.get("Tag")
         //setTimeout(alert("Recipe added successfully. The tag for this recipe is " + abc),7000);
        
        
-    alert("Recipe added successfully. The tag for this recipe is " + abc);
-    reactLocalStorage.remove('Tag')
+    // alert("Recipe added successfully. The tag for this recipe is " + abc);
+    // reactLocalStorage.remove('Tag')
         //const resp = location.myCustomProps.data;
         //console.log(resp)
     }

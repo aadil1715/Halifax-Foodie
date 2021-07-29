@@ -19,27 +19,7 @@ function RiverInformation({email}) {
     return question1.length > 0 && question2.length > 0;
   }
 
-  //THIS CODE IS USED TO GET SECURITY QUESTIONS
-
-//   useEffect(() => {
-//     if(!gotData){
-//       const docRef = db.collection('SecurityQuestions').doc(email);
-//       docRef.get().then((doc) => {
-//           if (doc.exists) {
-//               let data2 = doc.data();
-//               setRiverInformation({Q1: data2.Question1, Q2: data2.Question2})
-//               setGotData(true);
-//               console.log("Document data:", data2);
-//           } else {
-//               setGotData(false);
-//               console.log("No such document!");
-//           }
-//       }).catch(function (error) {
-//           setGotData(false);
-//           console.log("Error getting document:", error);
-//       });
-//     }
-//   }, [email])
+ 
   async function handleSubmit(event) {
     event.preventDefault();
     const docRef = db.collection('SecurityQuestions').doc(email);

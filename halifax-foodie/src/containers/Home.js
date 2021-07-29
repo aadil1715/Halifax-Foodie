@@ -7,6 +7,11 @@ import { Auth } from "aws-amplify";
 import { useHistory,Link } from "react-router-dom";
 import Lex from "./Lex";
 
+const openInNewTab = (url) => {
+  const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+  if (newWindow) newWindow.opener = null
+}
+
 export default function Home() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -54,6 +59,8 @@ export default function Home() {
           <Button  onClick={goRecipe} class="inner">Upload Recipie!</Button>
           <Button onClick={goRating} class="inner">Show food ratings</Button>
           <Button onClick={goFeedback} class="inner">Give Feedback</Button>
+          <Button onClick={()=>openInNewTab('https://datastudio.google.com/embed/u/0/reporting/0e1f261c-8af8-4016-a86d-e6a6187f7261/page/NQgWC')} class="inner">View Report</Button>
+          <Button onClick={()=>openInNewTab('http://127.0.0.1:5000/')} class="inner">Place an order!</Button>
           </div>) :(<div> </div>)
         }
         <Lex></Lex>

@@ -16,6 +16,8 @@ export default function GiveFeedback() {
     async function handleSubmit(event) {
       event.preventDefault();
       feedback2({feedback});
+      alert("Your feedback has been submitted.")
+      
     }
 
     return (
